@@ -64,6 +64,13 @@ public class ArrowController : MonoBehaviour
         // d < r1 + r2: 두 오브젝트가 겹쳤다는 의미
         if (d < r1 + r2)
         {
+            // 씬에서 "GameManager"라는 이름의 게임 오브젝트를 찾아 참조를 가져옵니다
+            GameObject gm = GameObject.Find("GameManager");
+            
+            // GameManager 컴포넌트를 가져와서 DecreaseHp() 메서드를 호출
+            // 플레이어가 화살에 맞았으므로 HP를 감소시킵니다
+            gm.GetComponent<GameManager>().DecreaseHp();
+
             // 충돌이 감지되었으므로 화살 오브젝트를 삭제
             // (플레이어가 화살에 맞은 것으로 처리)
             Destroy(gameObject);
