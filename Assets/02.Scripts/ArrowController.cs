@@ -26,6 +26,12 @@ public class ArrowController : MonoBehaviour
     // 화살의 이동, 화면 밖으로 나갔는지 확인, 플레이어와의 충돌 감지를 수행합니다.
     void Update()
     {
+        // 게임 오버 상태면 화살 이동을 중지
+        if (GameManager.isGameOver)
+        {
+            return;
+        }
+        
         // 화살을 아래 방향으로 이동시킵니다
         // Translate(x, y, z): 현재 위치에서 지정된 벡터만큼 이동
         // y축을 음수 방향(-arrowSpped)으로 이동하여 화살이 아래로 떨어지도록 함
@@ -74,8 +80,6 @@ public class ArrowController : MonoBehaviour
             // 충돌이 감지되었으므로 화살 오브젝트를 삭제
             // (플레이어가 화살에 맞은 것으로 처리)
             Destroy(gameObject);
-
-            Debug.Log("Hit!");
         }   
     }
 }

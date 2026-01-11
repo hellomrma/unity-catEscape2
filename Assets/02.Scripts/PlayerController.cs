@@ -26,17 +26,32 @@ public class PlayerController : MonoBehaviour
     // 사용자 입력을 지속적으로 감지하고 플레이어를 이동시킵니다.
     void Update()
     {
+        
+        // 함수로 묶고 싶은 코드에 alt+엔터 클릭하고 이름을 입력하면 함수로 만들어 줌.
+        // 게임 오버가 아닐 때만 이동 가능
+        if (!GameManager.isGameOver)
+        {
+            Move();
+        }
+
+
         // 플레이어의 위치가 화면 경계를 벗어나지 않도록 제한
-        if (transform.position.x >= 7f)
-        {
-            transform.position = new Vector3(7f, transform.position.y, transform.position.z);
+        //if (transform.position.x > 8f)
+        //{
+        //    transform.position = new Vector3(8f, transform.position.y, transform.position.z);
 
-        }
-        else if (transform.position.x <= -7)
-        {
-            transform.position = new Vector3(-7f, transform.position.y, transform.position.z);
-        }
+        //}
+        //if (transform.position.x < -8f)
+        //{
+        //    transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
+        //}
 
+        // 플레이어의 위치를 화면 경계를 벗어나지 않도록 제한
+         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8f, 8f), transform.position.y, transform.position.z);
+    }
+
+    private void Move()
+    {
         // 왼쪽 화살표 키가 눌려있는지 확인
         // GetKey는 키가 눌려있는 동안 계속 true를 반환합니다
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -46,7 +61,7 @@ public class PlayerController : MonoBehaviour
             // (-moveSpeed, 0, 0)은 X축으로 음수 방향(왼쪽), Y축과 Z축은 변화 없음
             transform.Translate(-moveSpeed, 0, 0);
         }
-        
+
         // 오른쪽 화살표 키가 눌려있는지 확인
         if (Input.GetKey(KeyCode.RightArrow))
         {

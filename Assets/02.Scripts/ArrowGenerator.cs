@@ -23,6 +23,12 @@ public class ArrowGenerator : MonoBehaviour
     // 시간을 누적하고, 일정 시간이 지나면 새로운 화살을 생성합니다.
     void Update()
     {
+        // 게임 오버 상태면 화살 생성을 중지
+        if (GameManager.isGameOver)
+        {
+            return;
+        }
+        
         // 이전 프레임과 현재 프레임 사이의 시간 간격을 누적
         // Time.deltaTime은 프레임레이트와 무관하게 일정한 시간 간격을 제공합니다.
         delta += Time.deltaTime;
@@ -47,7 +53,6 @@ public class ArrowGenerator : MonoBehaviour
         }
     }
 }
-
 // 유니티에서 시간 관련 속성들
 // 
 // Time.time
@@ -79,3 +84,4 @@ public class ArrowGenerator : MonoBehaviour
 // - Time.timeScale이나 게임 일시정지의 영향을 받지 않습니다.
 // - 시스템의 실제 시간을 기준으로 측정됩니다.
 // - 사용 예: 네트워크 동기화, 실제 시간 기반 타이머, 일시정지와 무관한 시간 측정
+
