@@ -26,6 +26,17 @@ public class PlayerController : MonoBehaviour
     // 사용자 입력을 지속적으로 감지하고 플레이어를 이동시킵니다.
     void Update()
     {
+        // 플레이어의 위치가 화면 경계를 벗어나지 않도록 제한
+        if (transform.position.x >= 7f)
+        {
+            transform.position = new Vector3(7f, transform.position.y, transform.position.z);
+
+        }
+        else if (transform.position.x <= -7)
+        {
+            transform.position = new Vector3(-7f, transform.position.y, transform.position.z);
+        }
+
         // 왼쪽 화살표 키가 눌려있는지 확인
         // GetKey는 키가 눌려있는 동안 계속 true를 반환합니다
         if (Input.GetKey(KeyCode.LeftArrow))

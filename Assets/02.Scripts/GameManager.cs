@@ -20,5 +20,22 @@ public class GameManager : MonoBehaviour
         // HP 게이지의 채워진 양을 0.2만큼 감소
         // fillAmount가 0.0이 되면 HP가 모두 소진된 상태입니다.
         hpGauge.fillAmount -= 0.2f;
+        
+        // 부동소수점 오차로 인해 음수가 되거나 매우 작은 값이 남는 것을 방지
+        // 매우 작은 값(0.001 이하)도 0으로 처리하여 부동소수점 오차 문제 해결
+        if (hpGauge.fillAmount < 0.001f)
+        {
+            hpGauge.fillAmount = 0f;
+        }
+        // 0과 1 사이의 값으로 제한
+        hpGauge.fillAmount = Mathf.Clamp01(hpGauge.fillAmount);
+
+        // 부동소수점 오차를 고려하여 0 이하인지 확인
+        // Mathf.Approximately를 사용하여 부동소수점 오차를 허용한 비교
+        if (hpGauge.fillAmount <= 0f || Mathf.Approximately(hpGauge.fillAmount, 0f))
+        {
+            Debug.Log("Game Over!");
+            // 게임 오버 처리 로직을 여기에 추가할 수 있습니다.
+        }
     }
 }

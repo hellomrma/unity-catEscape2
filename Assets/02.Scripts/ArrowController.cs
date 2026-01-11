@@ -74,6 +74,8 @@ public class ArrowController : MonoBehaviour
             // 충돌이 감지되었으므로 화살 오브젝트를 삭제
             // (플레이어가 화살에 맞은 것으로 처리)
             Destroy(gameObject);
+
+            Debug.Log("Hit!");
         }   
     }
 }
