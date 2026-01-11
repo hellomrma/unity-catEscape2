@@ -1,4 +1,4 @@
-﻿// Unity의 기본 컬렉션 클래스들을 사용하기 위한 네임스페이스
+// Unity의 기본 컬렉션 클래스들을 사용하기 위한 네임스페이스
 using System.Collections;
 // 제네릭 컬렉션 클래스들을 사용하기 위한 네임스페이스
 using System.Collections.Generic;
