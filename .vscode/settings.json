@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "catEscape.sln"
+    "dotnet.defaultSolution": "unity-catEscape2.sln"
 }
